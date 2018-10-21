@@ -45,7 +45,8 @@ CREATE TABLE positions(
     id INTEGER PRIMARY KEY,
     employer_id INTEGER NOT NULL,
     name VARCHAR(100) NOT NULL,
-    maximum_salary INTEGER NOT NULL
+    maximum_salary INTEGER NOT NULL,
+    FOREIGN KEY (employer_id) REFERENCES employers (id)
 );
 CREATE TABLE positions_tech_stack(
     position_id INTEGER,
@@ -58,6 +59,7 @@ CREATE TABLE processes(
     candidate_id INTEGER,
     position_id INTEGER,
     status VARCHAR(8) NOT NULL,
+    creation_time datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (candidate_id) REFERENCES candidates (id),
     FOREIGN KEY (position_id) REFERENCES positions (id),
     PRIMARY KEY (candidate_id, position_id)

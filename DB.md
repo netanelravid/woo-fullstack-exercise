@@ -42,6 +42,7 @@
 - candidate_id INTEGER,
 - position_id INTEGER,
 - status VARCHAR(8) NOT NULL,
+- creation_time datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 - FOREIGN KEY (candidate_id) REFERENCES candidates (id),
 - FOREIGN KEY (position_id) REFERENCES positions (id),
 - PRIMARY KEY (candidate_id, position_id)
